@@ -26,61 +26,80 @@ export default function Step1ProfilePage() {
 
   const handleNext = () => {
     console.log("Saving profile data:", userData);
-    // Navigate to next step
-    router.push('/users/student/registration/profile-registration/academic');
+    router.push("/users/student/registration/profile-registration/academic");
   };
+
+  const steps = [
+    { label: "Profile Info", active: true, icon: "radio_button_checked" },
+    { label: "Academic", active: false, icon: "circle" },
+    { label: "Preferences", active: false, icon: "circle" },
+    { label: "Complete", active: false, icon: "circle" },
+  ];
 
   return (
     <>
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center py-10 px-4">
-        <div className="max-w-[1000px] w-full bg-white dark:bg-[#121121] rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-8">
-          {/* Progress Bar / Steps Indicator */}
-          <div className="grid grid-cols-4 gap-x-2 px-4 mb-12">
-            <div className="flex flex-col items-center gap-1">
-              <span className="material-symbols-outlined text-[#5048e5] font-bold">
-                radio_button_checked
-              </span>
-              <p className="text-[#5048e5] text-[10px] font-bold uppercase tracking-widest">
-                Profile Info
-              </p>
-            </div>
-            {["Academic", "Preferences", "Complete"].map((step) => (
+      <main className="flex-1 flex flex-col items-center py-6 md:py-10 px-4 w-full">
+        <div className="max-w-[1000px] w-full bg-white dark:bg-[#121121] rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-6 md:p-8">
+          {/* Responsive Progress Bar */}
+          <div className="flex items-start justify-between w-full mb-8 sm:mb-12 relative px-2">
+            {/* Connector Line (Visual only) */}
+            <div className="absolute top-3 left-4 right-4 h-0.5 bg-slate-100 dark:bg-slate-800 -z-10 hidden sm:block" />
+
+            {steps.map((step, index) => (
               <div
-                key={step}
-                className="flex flex-col items-center gap-1 opacity-40"
+                key={index}
+                className="flex flex-col items-center gap-1.5 z-10 bg-white dark:bg-[#121121] px-1"
               >
-                <span className="material-symbols-outlined text-slate-400 dark:text-slate-600">
-                  circle
+                <span
+                  className={`material-symbols-outlined text-2xl ${
+                    step.active
+                      ? "text-[#5048e5] font-bold"
+                      : "text-slate-300 dark:text-slate-700"
+                  }`}
+                >
+                  {step.icon}
                 </span>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
-                  {step}
+                {/* 
+                   Responsiveness Logic: 
+                   - Always show the label if it's the ACTIVE step.
+                   - Hide labels for inactive steps on mobile (hidden).
+                   - Show all labels on small screens and up (sm:block).
+                */}
+                <p
+                  className={`text-[10px] font-bold uppercase tracking-widest whitespace-nowrap ${
+                    step.active
+                      ? "text-[#5048e5] block"
+                      : "text-slate-400 dark:text-slate-600 hidden sm:block"
+                  }`}
+                >
+                  {step.label}
                 </p>
               </div>
             ))}
           </div>
 
           {/* Title Section */}
-          <div className="text-center mb-10">
-            <h1 className="text-slate-900 dark:text-white text-3xl font-black pb-2">
+          <div className="text-center mb-8 sm:mb-10">
+            <h1 className="text-slate-900 dark:text-white text-2xl sm:text-3xl font-black pb-2">
               Tell us about yourself
             </h1>
-            <p className="text-slate-500 dark:text-slate-400 max-w-lg mx-auto">
+            <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base max-w-lg mx-auto">
               Choose how you&apos;d like to set up your profile to get started
               with your learning journey.
             </p>
           </div>
 
           {/* Selection Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12">
             {/* AI Upload Card */}
-            <div className="group p-6 rounded-xl border-2 border-[#5048e5] bg-[#5048e5]/5 hover:bg-[#5048e5]/10 transition-all cursor-pointer">
-              <div className="flex justify-between items-start mb-6">
+            <div className="group p-5 sm:p-6 rounded-xl border-2 border-[#5048e5] bg-[#5048e5]/5 hover:bg-[#5048e5]/10 transition-all cursor-pointer">
+              <div className="flex justify-between items-start mb-4 sm:mb-6">
                 <div>
-                  <p className="text-slate-900 dark:text-white text-lg font-bold">
+                  <p className="text-slate-900 dark:text-white text-base sm:text-lg font-bold">
                     Upload CV
                   </p>
-                  <p className="text-[#5048e5] text-sm font-medium">
+                  <p className="text-[#5048e5] text-xs sm:text-sm font-medium">
                     AI-Powered Parsing
                   </p>
                 </div>
@@ -88,8 +107,8 @@ export default function Step1ProfilePage() {
                   auto_awesome
                 </span>
               </div>
-              <div className="flex flex-col items-center justify-center py-10 border-2 border-dashed border-[#5048e5]/20 rounded-xl bg-white/50 dark:bg-slate-800/50">
-                <span className="material-symbols-outlined text-4xl text-[#5048e5] mb-3">
+              <div className="flex flex-col items-center justify-center py-8 sm:py-10 border-2 border-dashed border-[#5048e5]/20 rounded-xl bg-white/50 dark:bg-slate-800/50">
+                <span className="material-symbols-outlined text-3xl sm:text-4xl text-[#5048e5] mb-3">
                   cloud_upload
                 </span>
                 <p className="text-slate-600 dark:text-slate-300 text-sm font-medium">
@@ -110,13 +129,13 @@ export default function Step1ProfilePage() {
             </div>
 
             {/* Manual Entry Card */}
-            <div className="group p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-[#5048e5]/50 transition-all cursor-pointer bg-slate-50 dark:bg-slate-800/20">
-              <div className="flex justify-between items-start mb-6">
+            <div className="group p-5 sm:p-6 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-[#5048e5]/50 transition-all cursor-pointer bg-slate-50 dark:bg-slate-800/20">
+              <div className="flex justify-between items-start mb-4 sm:mb-6">
                 <div>
-                  <p className="text-slate-900 dark:text-white text-lg font-bold">
+                  <p className="text-slate-900 dark:text-white text-base sm:text-lg font-bold">
                     Fill Manually
                   </p>
-                  <p className="text-slate-500 dark:text-slate-400 text-sm font-normal">
+                  <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm font-normal">
                     Step-by-step entry
                   </p>
                 </div>
@@ -149,7 +168,7 @@ export default function Step1ProfilePage() {
           </div>
 
           {/* Form Inputs */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-slate-100 dark:border-slate-800 pt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-slate-100 dark:border-slate-800 pt-8 sm:pt-12">
             <div className="space-y-2">
               <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300">
                 Full Name
@@ -157,7 +176,7 @@ export default function Step1ProfilePage() {
               <input
                 value={userData.fullName}
                 onChange={(e) => handleUpdate({ fullName: e.target.value })}
-                className="w-full h-12 px-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:border-[#5048e5] focus:ring-1 focus:ring-[#5048e5] outline-none transition-all dark:text-white"
+                className="w-full h-12 px-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:border-[#5048e5] focus:ring-1 focus:ring-[#5048e5] outline-none transition-all dark:text-white text-sm"
               />
             </div>
             <div className="space-y-2">
@@ -168,7 +187,7 @@ export default function Step1ProfilePage() {
                 type="date"
                 value={userData.dob}
                 onChange={(e) => handleUpdate({ dob: e.target.value })}
-                className="w-full h-12 px-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:border-[#5048e5] focus:ring-1 focus:ring-[#5048e5] outline-none transition-all dark:text-white"
+                className="w-full h-12 px-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:border-[#5048e5] focus:ring-1 focus:ring-[#5048e5] outline-none transition-all dark:text-white text-sm"
               />
             </div>
             <div className="space-y-2">
@@ -178,7 +197,7 @@ export default function Step1ProfilePage() {
               <input
                 value={userData.phone}
                 onChange={(e) => handleUpdate({ phone: e.target.value })}
-                className="w-full h-12 px-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:border-[#5048e5] focus:ring-1 focus:ring-[#5048e5] outline-none transition-all dark:text-white"
+                className="w-full h-12 px-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:border-[#5048e5] focus:ring-1 focus:ring-[#5048e5] outline-none transition-all dark:text-white text-sm"
                 placeholder="+1 (555) 000-0000"
               />
             </div>
@@ -189,7 +208,7 @@ export default function Step1ProfilePage() {
               <input
                 value={userData.email}
                 readOnly
-                className="w-full h-12 px-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 text-slate-400 outline-none cursor-not-allowed"
+                className="w-full h-12 px-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 text-slate-400 outline-none cursor-not-allowed text-sm"
               />
             </div>
           </div>
@@ -197,16 +216,11 @@ export default function Step1ProfilePage() {
       </main>
 
       {/* Sticky Action Footer */}
-      <footer className="bg-white dark:bg-[#121121] border-t border-slate-200 dark:border-slate-800 px-6 lg:px-10 py-6 sticky bottom-0 w-full shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
-        <div className="max-w-[1000px] mx-auto flex items-center justify-between">
-          <button className="flex items-center gap-2 text-slate-500 font-bold hover:text-slate-700 dark:hover:text-slate-300 transition-colors">
-            <span className="material-symbols-outlined text-lg">save</span> Save
-            Draft
-          </button>
-
+      <footer className="bg-white dark:bg-[#121121] border-t border-slate-200 dark:border-slate-800 px-4 sm:px-6 lg:px-10 py-4 sm:py-6 sticky bottom-0 w-full shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-20">
+        <div className="max-w-[1000px] mx-auto flex items-center justify-end">
           <button
             onClick={handleNext}
-            className="flex items-center justify-center gap-2 h-12 px-8 rounded-lg bg-[linear-gradient(135deg,#4F46E5_0%,#7C3AED_100%)] text-white font-bold shadow-lg shadow-[#5048e5]/20 hover:-translate-y-0.5 active:scale-[0.99] transition-all"
+            className="flex items-center justify-center gap-2 h-12 px-8 rounded-lg bg-[linear-gradient(135deg,#4F46E5_0%,#7C3AED_100%)] text-white font-bold shadow-lg shadow-[#5048e5]/20 hover:-translate-y-0.5 active:scale-[0.99] transition-all text-sm w-full sm:w-auto"
           >
             Next Step{" "}
             <span className="material-symbols-outlined text-lg">

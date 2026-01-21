@@ -8,10 +8,35 @@ export default function MessagesPage() {
   );
   const [input, setInput] = useState("");
 
+  // State to handle mobile view switching
+  const [isMobileChatOpen, setIsMobileChatOpen] = useState(false);
+
+  // Helper to open chat on mobile
+  const handleChatSelect = () => {
+    setIsMobileChatOpen(true);
+  };
+
+  // Helper to go back to list on mobile
+  const handleBackToList = () => {
+    setIsMobileChatOpen(false);
+  };
+
   return (
-    <div className="flex h-[calc(100vh-64px)] bg-[#f6f7f8] dark:bg-[#111921] font-sans text-slate-900 dark:text-slate-100 overflow-hidden">
-      {/* Left Column: Conversation List */}
-      <aside className="w-[320px] flex flex-col border-r border-[#e7edf3] dark:border-slate-800 bg-white dark:bg-[#1a242e] flex-shrink-0">
+    <div className="flex h-[calc(100vh-64px)] bg-[#f6f7f8] dark:bg-[#111921] font-sans text-slate-900 dark:text-slate-100 overflow-hidden relative">
+      {/* 
+        LEFT COLUMN: Conversation List 
+        - W-full on mobile (takes full width)
+        - Hidden on mobile if chat is open
+        - Fixed width on desktop (md:w-[320px])
+        - Always visible on desktop (md:flex)
+      */}
+      <aside
+        className={`
+          flex-col border-r border-[#e7edf3] dark:border-slate-800 bg-white dark:bg-[#1a242e] flex-shrink-0 transition-all
+          ${isMobileChatOpen ? "hidden md:flex" : "flex w-full"} 
+          md:w-[320px]
+        `}
+      >
         <div className="p-4 flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <h1 className="text-xl font-bold">Messages</h1>
@@ -47,8 +72,11 @@ export default function MessagesPage() {
 
         {/* Chat List */}
         <div className="flex-1 overflow-y-auto px-2 custom-scrollbar">
-          {/* Active Item */}
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-[#197fe6]/5 border border-[#197fe6]/10 cursor-pointer mb-1">
+          {/* Active Item - Added onClick */}
+          <div
+            onClick={handleChatSelect}
+            className="flex items-center gap-3 p-3 rounded-xl bg-[#197fe6]/5 border border-[#197fe6]/10 cursor-pointer mb-1"
+          >
             <div className="relative shrink-0">
               <div
                 className="size-12 rounded-full bg-cover bg-center"
@@ -74,8 +102,11 @@ export default function MessagesPage() {
             </div>
           </div>
 
-          {/* Other Item */}
-          <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-colors mb-1">
+          {/* Other Item - Added onClick */}
+          <div
+            onClick={handleChatSelect}
+            className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-colors mb-1"
+          >
             <div className="relative shrink-0">
               <div
                 className="size-12 rounded-full bg-cover bg-center"
@@ -104,8 +135,11 @@ export default function MessagesPage() {
             </div>
           </div>
 
-          {/* Group Item */}
-          <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-colors mb-1">
+          {/* Group Item - Added onClick */}
+          <div
+            onClick={handleChatSelect}
+            className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-colors mb-1"
+          >
             <div className="relative shrink-0">
               <div className="size-12 rounded-full bg-[#197fe6]/10 flex items-center justify-center text-[#197fe6]">
                 <span className="material-symbols-outlined">groups</span>
@@ -126,11 +160,29 @@ export default function MessagesPage() {
         </div>
       </aside>
 
-      {/* Center Column: Main Chat Window */}
-      <section className="flex-1 flex flex-col bg-slate-50 dark:bg-[#111921] relative min-w-0">
+      {/* 
+        CENTER COLUMN: Main Chat Window 
+        - Hidden on mobile unless chat is open
+        - Always visible on desktop (md:flex)
+        - w-full on mobile when active
+      */}
+      <section
+        className={`
+          flex-1 flex-col bg-slate-50 dark:bg-[#111921] relative min-w-0
+          ${isMobileChatOpen ? "flex w-full absolute inset-0 z-20" : "hidden md:flex md:static"}
+        `}
+      >
         {/* Chat Header */}
-        <header className="h-16 shrink-0 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-[#1a242e]/80 backdrop-blur-md flex items-center justify-between px-6 z-10">
+        <header className="h-16 shrink-0 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-[#1a242e]/80 backdrop-blur-md flex items-center justify-between px-4 md:px-6 z-10">
           <div className="flex items-center gap-3">
+            {/* Back Button (Mobile Only) */}
+            <button
+              onClick={handleBackToList}
+              className="md:hidden p-1 mr-1 text-slate-500 hover:text-[#197fe6]"
+            >
+              <span className="material-symbols-outlined">arrow_back</span>
+            </button>
+
             <div className="flex flex-col">
               <div className="flex items-center gap-2">
                 <h3 className="text-base font-bold text-slate-900 dark:text-white">
@@ -149,21 +201,21 @@ export default function MessagesPage() {
               </div>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            {/* <button className="text-slate-400 hover:text-[#197fe6] transition-colors">
+          {/* <div className="flex items-center gap-2 md:gap-4">
+            <button className="text-slate-400 hover:text-[#197fe6] transition-colors p-2">
               <span className="material-symbols-outlined">videocam</span>
             </button>
-            <button className="text-slate-400 hover:text-[#197fe6] transition-colors">
+            <button className="text-slate-400 hover:text-[#197fe6] transition-colors p-2">
               <span className="material-symbols-outlined">call</span>
-            </button> */}
-            <button className="text-slate-400 hover:text-[#197fe6] transition-colors lg:hidden">
+            </button>
+            <button className="text-slate-400 hover:text-[#197fe6] transition-colors xl:hidden p-2">
               <span className="material-symbols-outlined">info</span>
             </button>
-          </div>
+          </div> */}
         </header>
 
         {/* Messages Area */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
+        <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6 custom-scrollbar">
           <div className="flex justify-center">
             <span className="px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-[10px] font-bold text-slate-500 uppercase tracking-tighter">
               Today, Oct 24
@@ -171,7 +223,7 @@ export default function MessagesPage() {
           </div>
 
           {/* Received Message */}
-          <div className="flex items-start gap-3 max-w-[85%]">
+          <div className="flex items-start gap-3 max-w-[90%] md:max-w-[85%]">
             <div
               className="size-8 rounded-full bg-cover bg-center shrink-0"
               style={{
@@ -193,7 +245,7 @@ export default function MessagesPage() {
 
           {/* Sent Message */}
           <div className="flex flex-col items-end gap-1">
-            <div className="flex items-start gap-3 max-w-[85%] flex-row-reverse">
+            <div className="flex items-start gap-3 max-w-[90%] md:max-w-[85%] flex-row-reverse">
               <div className="flex flex-col gap-1 items-end">
                 <div className="bg-gradient-to-br from-[#197fe6] to-[#4a9eff] text-white p-4 rounded-xl rounded-tr-none shadow-md">
                   <p className="text-sm leading-relaxed">
@@ -212,7 +264,7 @@ export default function MessagesPage() {
           </div>
 
           {/* Thread Reply (Received) */}
-          <div className="flex items-start gap-3 max-w-[85%]">
+          <div className="flex items-start gap-3 max-w-[90%] md:max-w-[85%]">
             <div
               className="size-8 rounded-full bg-cover bg-center shrink-0"
               style={{
@@ -239,7 +291,7 @@ export default function MessagesPage() {
               </div>
 
               {/* Attachment Card */}
-              <div className="mt-2 w-72 bg-white dark:bg-[#1a242e] rounded-xl border border-slate-100 dark:border-slate-700 p-3 flex items-center gap-3 shadow-sm hover:border-[#197fe6]/30 transition-all cursor-pointer group">
+              <div className="mt-2 w-full sm:w-72 bg-white dark:bg-[#1a242e] rounded-xl border border-slate-100 dark:border-slate-700 p-3 flex items-center gap-3 shadow-sm hover:border-[#197fe6]/30 transition-all cursor-pointer group">
                 <div className="size-10 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-600 flex items-center justify-center shrink-0">
                   <span className="material-symbols-outlined">
                     picture_as_pdf
@@ -263,25 +315,25 @@ export default function MessagesPage() {
         </div>
 
         {/* Input Area */}
-        <div className="p-6 bg-white dark:bg-[#1a242e] border-t border-slate-200 dark:border-slate-800">
+        <div className="p-4 md:p-6 bg-white dark:bg-[#1a242e] border-t border-slate-200 dark:border-slate-800">
           <div className="flex flex-col gap-2 bg-slate-100 dark:bg-slate-800/50 rounded-2xl p-2">
             {/* Toolbar */}
-            <div className="flex items-center gap-1 px-2 border-b border-slate-200 dark:border-slate-700 pb-2 mb-1">
+            <div className="flex items-center gap-1 px-2 border-b border-slate-200 dark:border-slate-700 pb-2 mb-1 overflow-x-auto no-scrollbar">
               {["format_bold", "format_italic", "link"].map((icon) => (
                 <button
                   key={icon}
-                  className="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded text-slate-500"
+                  className="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded text-slate-500 shrink-0"
                 >
                   <span className="material-symbols-outlined text-[18px]">
                     {icon}
                   </span>
                 </button>
               ))}
-              <div className="w-px h-4 bg-slate-300 dark:bg-slate-600 mx-1"></div>
+              <div className="w-px h-4 bg-slate-300 dark:bg-slate-600 mx-1 shrink-0"></div>
               {["format_list_bulleted", "code"].map((icon) => (
                 <button
                   key={icon}
-                  className="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded text-slate-500"
+                  className="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-700 rounded text-slate-500 shrink-0"
                 >
                   <span className="material-symbols-outlined text-[18px]">
                     {icon}
@@ -291,7 +343,7 @@ export default function MessagesPage() {
             </div>
 
             {/* Text Input */}
-            <div className="flex items-end gap-3 px-2">
+            <div className="flex items-end gap-2 md:gap-3 px-2">
               <button className="mb-2 p-1.5 text-slate-400 hover:text-[#197fe6] transition-colors">
                 <span className="material-symbols-outlined">add_circle</span>
               </button>
@@ -299,10 +351,10 @@ export default function MessagesPage() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 className="flex-1 bg-transparent border-none focus:ring-0 text-sm resize-none py-2 max-h-32 min-h-[40px] placeholder:text-slate-400 dark:text-white outline-none"
-                placeholder="Write a message to Dr. Chen..."
+                placeholder="Write a message..."
               ></textarea>
               <div className="flex items-center gap-2 mb-1.5">
-                <button className="p-1.5 text-slate-400 hover:text-[#197fe6] transition-colors">
+                <button className="p-1.5 text-slate-400 hover:text-[#197fe6] transition-colors hidden sm:block">
                   <span className="material-symbols-outlined">
                     sentiment_satisfied
                   </span>
@@ -318,7 +370,11 @@ export default function MessagesPage() {
         </div>
       </section>
 
-      {/* Right Column: Info Panel */}
+      {/* 
+        Right Column: Info Panel 
+        - Hidden on mobile/tablet (default xl:flex)
+        - You could toggle this on mobile with another state if desired
+      */}
       <aside className="hidden xl:flex w-[320px] flex-col border-l border-[#e7edf3] dark:border-slate-800 bg-white dark:bg-[#1a242e] overflow-y-auto custom-scrollbar flex-shrink-0">
         <div className="p-6 flex flex-col items-center text-center">
           <div
