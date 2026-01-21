@@ -3,7 +3,7 @@
 import React from "react";
 import { PlayerHeader } from "@/components/lesson/player/PlayerHeader";
 import { PlayerSidebar } from "@/components/lesson/player/PlayerSidebar";
-import { PlayerAiChat } from "@/components/lesson/player/PlayerAiChat";
+import { PlayerRightPanel } from "@/components/lesson/player/PlayerRightPanel";
 
 export default function CoursePlayerPage() {
   return (
@@ -11,7 +11,7 @@ export default function CoursePlayerPage() {
       <PlayerHeader />
 
       {/* Main Player Container - full height minus header */}
-      <div className="flex h-[calc(100vh-64px)] overflow-hidden">
+      <div className="flex h-[calc(100vh-64px)] overflow-hidden font-sans">
         {/* Left: Outline */}
         <div className="hidden lg:block h-full">
           <PlayerSidebar />
@@ -150,14 +150,11 @@ export default function CoursePlayerPage() {
               </ul>
             </div>
           </div>
-
-          {/* Floating Footer inside center panel (or fixed relative to page) */}
-          {/* We'll use fixed positioning for the footer to match the design */}
         </section>
 
-        {/* Right: AI Chat */}
+        {/* Right: Smart Notes / AI Chat */}
         <div className="hidden xl:block h-full">
-          <PlayerAiChat />
+          <PlayerRightPanel />
         </div>
       </div>
 

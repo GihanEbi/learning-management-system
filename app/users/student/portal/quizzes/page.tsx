@@ -23,7 +23,7 @@ export default function QuizzesPage() {
 
           {/* Status Tabs */}
           <div className="flex border-b border-[#d0dbe7] dark:border-slate-800 gap-8 overflow-x-auto">
-            <button className="border-b-2 border-[#197fe6] text-[#197fe6] pb-3 font-semibold text-sm whitespace-nowrap">
+            <button className="border-b-2 border-[#5048e5] text-[#5048e5] pb-3 font-semibold text-sm whitespace-nowrap">
               Available
             </button>
             <button className="border-b-2 border-transparent text-[#4e7397] hover:text-[#0e141b] dark:hover:text-white pb-3 font-semibold text-sm transition-colors whitespace-nowrap">
@@ -36,9 +36,9 @@ export default function QuizzesPage() {
         </div>
 
         {/* Info Banner */}
-        <div className="mb-8 p-4 rounded-lg bg-[#197fe6]/5 border border-[#197fe6]/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="mb-8 p-4 rounded-lg bg-[#5048e5]/5 border border-[#5048e5]/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="h-10 w-10 flex items-center justify-center rounded-full bg-[#197fe6]/10 text-[#197fe6] shrink-0">
+            <div className="h-10 w-10 flex items-center justify-center rounded-full bg-[#5048e5]/10 text-[#5048e5] shrink-0">
               <span className="material-symbols-outlined">psychology</span>
             </div>
             <div>
@@ -46,12 +46,12 @@ export default function QuizzesPage() {
                 Master your subjects with Practice Mode
               </p>
               <p className="text-sm text-[#4e7397] dark:text-slate-400">
-                Practice quizzes don't affect your final grade. Use them to
+                Practice quizzes don&apos;t affect your final grade. Use them to
                 sharpen your skills before the exam.
               </p>
             </div>
           </div>
-          <button className="bg-[#197fe6] hover:bg-[#197fe6]/90 text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors shrink-0">
+          <button className="bg-[#5048e5] hover:bg-[#5048e5]/90 text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors shrink-0">
             Learn More
           </button>
         </div>
@@ -68,37 +68,37 @@ export default function QuizzesPage() {
                 <label className="flex items-center gap-3 cursor-pointer group">
                   <input
                     defaultChecked
-                    className="h-5 w-5 rounded border-gray-300 text-[#197fe6] focus:ring-[#197fe6] dark:bg-slate-800 dark:border-slate-700"
+                    className="h-5 w-5 rounded border-gray-300 text-[#5048e5] focus:ring-[#5048e5] dark:bg-slate-800 dark:border-slate-700"
                     type="checkbox"
                   />
-                  <span className="text-sm font-medium text-[#4e7397] dark:text-slate-300 group-hover:text-[#197fe6] transition-colors">
+                  <span className="text-sm font-medium text-[#4e7397] dark:text-slate-300 group-hover:text-[#5048e5] transition-colors">
                     All Courses
                   </span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer group">
                   <input
-                    className="h-5 w-5 rounded border-gray-300 text-[#197fe6] focus:ring-[#197fe6] dark:bg-slate-800 dark:border-slate-700"
+                    className="h-5 w-5 rounded border-gray-300 text-[#5048e5] focus:ring-[#5048e5] dark:bg-slate-800 dark:border-slate-700"
                     type="checkbox"
                   />
-                  <span className="text-sm font-medium text-[#4e7397] dark:text-slate-300 group-hover:text-[#197fe6] transition-colors">
+                  <span className="text-sm font-medium text-[#4e7397] dark:text-slate-300 group-hover:text-[#5048e5] transition-colors">
                     Intro to AI
                   </span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer group">
                   <input
-                    className="h-5 w-5 rounded border-gray-300 text-[#197fe6] focus:ring-[#197fe6] dark:bg-slate-800 dark:border-slate-700"
+                    className="h-5 w-5 rounded border-gray-300 text-[#5048e5] focus:ring-[#5048e5] dark:bg-slate-800 dark:border-slate-700"
                     type="checkbox"
                   />
-                  <span className="text-sm font-medium text-[#4e7397] dark:text-slate-300 group-hover:text-[#197fe6] transition-colors">
+                  <span className="text-sm font-medium text-[#4e7397] dark:text-slate-300 group-hover:text-[#5048e5] transition-colors">
                     Data Structures
                   </span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer group">
                   <input
-                    className="h-5 w-5 rounded border-gray-300 text-[#197fe6] focus:ring-[#197fe6] dark:bg-slate-800 dark:border-slate-700"
+                    className="h-5 w-5 rounded border-gray-300 text-[#5048e5] focus:ring-[#5048e5] dark:bg-slate-800 dark:border-slate-700"
                     type="checkbox"
                   />
-                  <span className="text-sm font-medium text-[#4e7397] dark:text-slate-300 group-hover:text-[#197fe6] transition-colors">
+                  <span className="text-sm font-medium text-[#4e7397] dark:text-slate-300 group-hover:text-[#5048e5] transition-colors">
                     Human Computer Interaction
                   </span>
                 </label>
@@ -113,28 +113,28 @@ export default function QuizzesPage() {
                 <label className="flex items-center gap-3 cursor-pointer group">
                   <input
                     defaultChecked
-                    className="h-5 w-5 rounded border-gray-300 text-[#197fe6] focus:ring-[#197fe6] dark:bg-slate-800 dark:border-slate-700"
+                    className="h-5 w-5 rounded border-gray-300 text-[#5048e5] focus:ring-[#5048e5] dark:bg-slate-800 dark:border-slate-700"
                     type="checkbox"
                   />
-                  <span className="text-sm font-medium text-[#4e7397] dark:text-slate-300 group-hover:text-[#197fe6] transition-colors">
+                  <span className="text-sm font-medium text-[#4e7397] dark:text-slate-300 group-hover:text-[#5048e5] transition-colors">
                     Graded
                   </span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer group">
                   <input
-                    className="h-5 w-5 rounded border-gray-300 text-[#197fe6] focus:ring-[#197fe6] dark:bg-slate-800 dark:border-slate-700"
+                    className="h-5 w-5 rounded border-gray-300 text-[#5048e5] focus:ring-[#5048e5] dark:bg-slate-800 dark:border-slate-700"
                     type="checkbox"
                   />
-                  <span className="text-sm font-medium text-[#4e7397] dark:text-slate-300 group-hover:text-[#197fe6] transition-colors">
+                  <span className="text-sm font-medium text-[#4e7397] dark:text-slate-300 group-hover:text-[#5048e5] transition-colors">
                     Practice
                   </span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer group">
                   <input
-                    className="h-5 w-5 rounded border-gray-300 text-[#197fe6] focus:ring-[#197fe6] dark:bg-slate-800 dark:border-slate-700"
+                    className="h-5 w-5 rounded border-gray-300 text-[#5048e5] focus:ring-[#5048e5] dark:bg-slate-800 dark:border-slate-700"
                     type="checkbox"
                   />
-                  <span className="text-sm font-medium text-[#4e7397] dark:text-slate-300 group-hover:text-[#197fe6] transition-colors">
+                  <span className="text-sm font-medium text-[#4e7397] dark:text-slate-300 group-hover:text-[#5048e5] transition-colors">
                     Final Exam
                   </span>
                 </label>
@@ -145,7 +145,7 @@ export default function QuizzesPage() {
               <h3 className="text-xs font-bold uppercase tracking-wider text-[#4e7397] mb-4">
                 Due Date
               </h3>
-              <select className="w-full h-10 px-3 bg-white dark:bg-slate-800 border-none rounded-lg text-sm text-[#4e7397] dark:text-slate-300 focus:ring-2 focus:ring-[#197fe6]/20">
+              <select className="w-full h-10 px-3 bg-white dark:bg-slate-800 border-none rounded-lg text-sm text-[#4e7397] dark:text-slate-300 focus:ring-2 focus:ring-[#5048e5]/20">
                 <option>Anytime</option>
                 <option>Due this week</option>
                 <option>Due next week</option>
@@ -167,7 +167,7 @@ export default function QuizzesPage() {
                   Available
                 </div>
               </div>
-              <h3 className="text-lg font-bold leading-tight text-[#0e141b] dark:text-white group-hover:text-[#197fe6] transition-colors">
+              <h3 className="text-lg font-bold leading-tight text-[#0e141b] dark:text-white group-hover:text-[#5048e5] transition-colors">
                 Intro to Neural Networks Final
               </h3>
               <p className="text-sm text-[#4e7397] mt-1 mb-4">
@@ -202,7 +202,7 @@ export default function QuizzesPage() {
                 </div>
               </div>
               <button
-                className="w-full py-3 bg-gradient-to-r from-[#197fe6] to-[#1668c1] hover:to-[#197fe6] text-white rounded-lg font-bold text-sm transition-all shadow-md shadow-[#197fe6]/20"
+                className="w-full py-3 bg-gradient-to-r from-[#5048e5] to-[#7c3aed] hover:to-[#5048e5] text-white rounded-lg font-bold text-sm transition-all shadow-md shadow-[#5048e5]/20"
                 onClick={() => {
                   router.push("/users/student/portal/quizzes/quizzPlayer");
                 }}
@@ -214,7 +214,7 @@ export default function QuizzesPage() {
             {/* Quiz Card 2: In-Progress (Resume Quiz) */}
             <div className="flex flex-col rounded-lg border border-[#d0dbe7] bg-white dark:bg-slate-900 dark:border-slate-800 hover:shadow-lg transition-all p-5">
               <div className="flex justify-between items-start mb-4">
-                <span className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded bg-blue-100 text-[#197fe6] dark:bg-[#197fe6]/20 dark:text-[#197fe6]">
+                <span className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded bg-blue-100 text-[#5048e5] dark:bg-[#5048e5]/20 dark:text-[#5048e5]">
                   Graded Quiz
                 </span>
                 <div className="flex items-center gap-1.5 text-xs text-orange-500 font-semibold">
@@ -255,12 +255,12 @@ export default function QuizzesPage() {
                 </div>
                 <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2 overflow-hidden">
                   <div
-                    className="bg-[#197fe6] h-full rounded-full"
+                    className="bg-[#5048e5] h-full rounded-full"
                     style={{ width: "75%" }}
                   ></div>
                 </div>
               </div>
-              <button className="w-full py-3 bg-white dark:bg-transparent border-2 border-[#197fe6] text-[#197fe6] hover:bg-[#197fe6]/5 rounded-lg font-bold text-sm transition-all">
+              <button className="w-full py-3 bg-white dark:bg-transparent border-2 border-[#5048e5] text-[#5048e5] hover:bg-[#5048e5]/5 rounded-lg font-bold text-sm transition-all">
                 Resume Quiz
               </button>
             </div>
@@ -311,7 +311,7 @@ export default function QuizzesPage() {
             {/* Quiz Card 4: Another Active Card */}
             <div className="flex flex-col rounded-lg border border-[#d0dbe7] bg-white dark:bg-slate-900 dark:border-slate-800 hover:shadow-lg transition-all p-5 group">
               <div className="flex justify-between items-start mb-4">
-                <span className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded bg-[#197fe6]/10 text-[#197fe6]">
+                <span className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded bg-[#5048e5]/10 text-[#5048e5]">
                   Graded Quiz
                 </span>
                 <div className="flex items-center gap-1.5 text-xs text-[#4e7397]">
@@ -319,7 +319,7 @@ export default function QuizzesPage() {
                   Available
                 </div>
               </div>
-              <h3 className="text-lg font-bold leading-tight text-[#0e141b] dark:text-white group-hover:text-[#197fe6] transition-colors">
+              <h3 className="text-lg font-bold leading-tight text-[#0e141b] dark:text-white group-hover:text-[#5048e5] transition-colors">
                 Module 4: Usability Testing
               </h3>
               <p className="text-sm text-[#4e7397] mt-1 mb-4">
@@ -342,7 +342,7 @@ export default function QuizzesPage() {
                 </div>
               </div>
               <button
-                className="w-full py-3 bg-gradient-to-r from-[#197fe6] to-[#1668c1] hover:to-[#197fe6] text-white rounded-lg font-bold text-sm transition-all shadow-md"
+                className="w-full py-3 bg-gradient-to-r from-[#5048e5] to-[#7c3aed] hover:to-[#5048e5] text-white rounded-lg font-bold text-sm transition-all shadow-md"
                 onClick={() => {
                   router.push("/users/student/portal/quizzes/quizzPlayer");
                 }}

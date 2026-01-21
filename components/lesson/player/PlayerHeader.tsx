@@ -29,7 +29,7 @@ export function PlayerHeader() {
             My Dashboard
           </Link>
           <Link
-            href="/dashboard/courses"
+            href="/users/student/portal/my_learning"
             className="text-[#545095] dark:text-gray-400 text-sm font-medium hover:text-[#5048e5] transition-colors"
           >
             Catalog
