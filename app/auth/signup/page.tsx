@@ -10,12 +10,18 @@ export default function SignUpPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Add your registration logic here
-    console.log("Form submitted");
-    // Example navigation academic/profile-info/
-    router.push(
-      "/users/student/registration/profile-registration/profile-info/",
-    );
+
+    // Add your registration API logic here (e.g., create user in DB)
+    console.log(`Registering as ${role}`);
+
+    // Conditional Routing based on Role
+    if (role === "student") {
+      router.push(
+        "/users/student/registration/profile-registration/profile-info",
+      );
+    } else {
+      router.push("/users/instructor/registration/profile-registration/personal_info");
+    }
   };
 
   return (
@@ -67,7 +73,6 @@ export default function SignUpPage() {
                     key={i}
                     className="size-10 rounded-full border-2 border-[#5048e5] bg-slate-200 overflow-hidden relative"
                   >
-                    {/* Using standard img for simplicity, use <Image /> in production */}
                     <img
                       src={`https://ui-avatars.com/api/?name=User+${i}&background=random`}
                       alt="user"
@@ -92,7 +97,7 @@ export default function SignUpPage() {
             <p className="text-slate-500 dark:text-slate-400">
               Already have an account?{" "}
               <Link
-                href="/auth/signin"
+                href="/login"
                 className="text-[#5048e5] font-semibold hover:underline"
               >
                 Log in
