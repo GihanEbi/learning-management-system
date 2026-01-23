@@ -10,6 +10,10 @@ export default function SignInPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    if (role === "instructor") {
+      router.push("/users/instructor/portal/dashboard");
+      return;
+    }
     router.push("/users/student/portal/dashboard");
   };
 

@@ -1,12 +1,10 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function InstructorCoursesPage() {
   const router = useRouter();
-  //   navigate to detail page
 
   const navigate = () => {
     router.push("/users/instructor/portal/courses/1");
@@ -78,62 +76,83 @@ export default function InstructorCoursesPage() {
   return (
     <div className="flex-1 min-h-screen bg-[#f6f6f8] dark:bg-[#121121] font-sans text-slate-900 dark:text-slate-100">
       {/* --- Top Navbar --- */}
-      <header className="sticky top-0 z-40 bg-white/80 dark:bg-[#1a192e]/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-8 py-5 flex items-center justify-between">
+      <header className="sticky top-0 z-40 bg-white/80 dark:bg-[#1a192e]/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 md:px-8 py-4 md:py-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white">
             My Courses
           </h2>
           <p className="text-sm text-slate-500 font-medium">
             Manage and monitor your course content
           </p>
         </div>
-        <div className="flex items-center gap-4 flex-1 max-w-xl mx-8">
-          <div className="relative w-full group">
+
+        <div className="flex w-full md:w-auto items-center gap-4 flex-1 justify-end">
+          <div className="relative w-full md:max-w-xs group">
             <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg group-focus-within:text-[#5048e5]">
               search
             </span>
             <input
               className="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-xl text-sm focus:ring-2 focus:ring-[#5048e5]/20 text-slate-900 dark:text-white placeholder-slate-500 outline-none transition-all"
-              placeholder="Search your courses..."
+              placeholder="Search..."
               type="text"
             />
           </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <button className="flex items-center gap-2 px-5 py-2.5 bg-[linear-gradient(135deg,#4F46E5_0%,#7C3AED_100%)] text-white rounded-xl text-sm font-bold shadow-lg shadow-[#5048e5]/20 hover:shadow-xl hover:-translate-y-0.5 transition-all">
+          <button
+            className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-[linear-gradient(135deg,#4F46E5_0%,#7C3AED_100%)] text-white rounded-xl text-sm font-bold shadow-lg shadow-[#5048e5]/20 hover:shadow-xl hover:-translate-y-0.5 transition-all whitespace-nowrap"
+            onClick={() => {
+              router.push(
+                "/users/instructor/portal/courses/create-course/basic-info",
+              );
+            }}
+          >
             <span className="material-symbols-outlined text-lg">add</span>
             Create New Course
           </button>
         </div>
       </header>
 
+      {/* --- Mobile Action Button (Visible only on small screens) --- */}
+      <div className="md:hidden px-4 pt-4">
+        <button
+          className="w-full flex items-center justify-center gap-2 px-5 py-3 bg-[linear-gradient(135deg,#4F46E5_0%,#7C3AED_100%)] text-white rounded-xl text-sm font-bold shadow-lg"
+          onClick={() => {
+            router.push(
+              "/users/instructor/portal/courses/create-course/basic-info",
+            );
+          }}
+        >
+          <span className="material-symbols-outlined text-lg">add</span>
+          Create New Course
+        </button>
+      </div>
+
       {/* --- Content Area --- */}
-      <div className="p-8">
-        {/* Tabs */}
-        <div className="flex items-center gap-8 mb-8 border-b border-slate-200 dark:border-slate-800 overflow-x-auto">
-          <button className="pb-4 text-sm font-bold text-[#5048e5] border-b-2 border-[#5048e5] whitespace-nowrap">
+      <div className="p-4 md:p-8">
+        {/* Scrollable Tabs */}
+        <div className="flex items-center gap-6 md:gap-8 mb-6 md:mb-8 border-b border-slate-200 dark:border-slate-800 overflow-x-auto no-scrollbar pb-1">
+          <button className="pb-3 md:pb-4 text-sm font-bold text-[#5048e5] border-b-2 border-[#5048e5] whitespace-nowrap">
             All Courses (12)
           </button>
-          <button className="pb-4 text-sm font-bold text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors whitespace-nowrap">
+          <button className="pb-3 md:pb-4 text-sm font-bold text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors whitespace-nowrap">
             Published (8)
           </button>
-          <button className="pb-4 text-sm font-bold text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors whitespace-nowrap">
+          <button className="pb-3 md:pb-4 text-sm font-bold text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors whitespace-nowrap">
             Drafts (3)
           </button>
-          <button className="pb-4 text-sm font-bold text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors whitespace-nowrap">
+          <button className="pb-3 md:pb-4 text-sm font-bold text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors whitespace-nowrap">
             Archived (1)
           </button>
         </div>
 
         {/* Course Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-6 pb-20">
           {courses.map((course) => (
             <div
               key={course.id}
-              className="bg-white dark:bg-[#1a192e] rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white dark:bg-[#1a192e] rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col"
             >
               {/* Course Image */}
-              <div className="relative h-44 bg-slate-100 dark:bg-slate-800 overflow-hidden">
+              <div className="relative h-40 md:h-44 bg-slate-100 dark:bg-slate-800 overflow-hidden shrink-0">
                 <img
                   alt={course.title}
                   className="w-full h-full object-cover"
@@ -155,15 +174,15 @@ export default function InstructorCoursesPage() {
               </div>
 
               {/* Course Details */}
-              <div className="p-5">
-                <h3 className="text-base font-bold text-slate-900 dark:text-white mb-4 line-clamp-1">
+              <div className="p-4 md:p-5 flex flex-col flex-1">
+                <h3 className="text-base font-bold text-slate-900 dark:text-white mb-4 line-clamp-2 min-h-[3rem]">
                   {course.title}
                 </h3>
 
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="flex items-center gap-2">
-                    <div className="size-8 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600">
+                    <div className="size-8 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 shrink-0">
                       <span className="material-symbols-outlined !text-lg">
                         group
                       </span>
@@ -176,7 +195,7 @@ export default function InstructorCoursesPage() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="size-8 rounded-lg bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center text-amber-600">
+                    <div className="size-8 rounded-lg bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center text-amber-600 shrink-0">
                       <span className="material-symbols-outlined !text-lg">
                         star
                       </span>
@@ -190,8 +209,10 @@ export default function InstructorCoursesPage() {
                   </div>
                 </div>
 
-                {/* Mini Analytics */}
-                <div className={`mb-6 ${!course.active && "opacity-40"}`}>
+                {/* Mini Analytics (Push to bottom if needed) */}
+                <div
+                  className={`mb-6 mt-auto ${!course.active && "opacity-40"}`}
+                >
                   <div className="flex items-center justify-between mb-2">
                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
                       Quick Analytics
@@ -237,8 +258,15 @@ export default function InstructorCoursesPage() {
           ))}
 
           {/* New Course Card Placeholder */}
-          <div className="bg-slate-50 dark:bg-[#1a192e]/50 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center p-8 group hover:border-[#5048e5]/50 transition-colors cursor-pointer">
-            <div className="size-14 rounded-full bg-white dark:bg-[#1a192e] flex items-center justify-center text-slate-400 group-hover:text-[#5048e5] transition-colors shadow-sm mb-4">
+          <div className="bg-slate-50 dark:bg-[#1a192e]/50 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center p-8 group hover:border-[#5048e5]/50 transition-colors cursor-pointer min-h-[380px]">
+            <div
+              className="size-14 rounded-full bg-white dark:bg-[#1a192e] flex items-center justify-center text-slate-400 group-hover:text-[#5048e5] transition-colors shadow-sm mb-4"
+              onClick={() => {
+                router.push(
+                  "/users/instructor/portal/courses/create-course/basic-info",
+                );
+              }}
+            >
               <span className="material-symbols-outlined text-3xl">add</span>
             </div>
             <p className="text-sm font-bold text-slate-900 dark:text-white">

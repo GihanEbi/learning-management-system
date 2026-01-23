@@ -17,36 +17,36 @@ export function InstructorSidebar() {
       icon: "dashboard",
       href: "/users/instructor/portal/dashboard",
     },
-    { label: "Courses", icon: "book", href: "/users/instructor/portal/courses" },
-    {
-      label: "My Learning",
-      icon: "school",
-      href: "/users/student/portal/my_learning",
-    },
+    { label: "Courses", icon: "school", href: "/users/instructor/portal/courses" },
     {
       label: "Assignments",
       icon: "assignment",
-      href: "/users/student/portal/assignments",
+      href: "/users/instructor/portal/assignments",
     },
     {
       label: "Quizzes",
       icon: "quiz",
-      href: "/users/student/portal/quizzes",
+      href: "/users/instructor/portal/quizzes",
+    },
+    {
+      label: "Announcements",
+      icon: "announcement",
+      href: "/users/instructor/portal/announcements",
     },
     {
       label: "Messages",
       icon: "message",
-      href: "/users/student/portal/messages",
+      href: "/users/instructor/portal/messages",
     },
     {
       label: "Schedule",
       icon: "calendar_today",
-      href: "/users/student/portal/schedule",
+      href: "/users/instructor/portal/schedule",
     },
     {
       label: "Settings",
       icon: "settings",
-      href: "/users/student/portal/settings",
+      href: "/users/instructor/portal/settings",
     },
   ];
 
